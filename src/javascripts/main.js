@@ -9,25 +9,35 @@ import "bootstrap"
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa'
+import { FaReact, FaNode, FaDatabase, FaShippingFast } from 'react-icons/fa'
 
 // Example class component
 export class PoweredBy extends React.Component {
   render(){
     return (
-      <h2 className="text-muted my-3"> Powered by {this.props.framework}</h2>
+      <h2 className="lead text-muted my-3">Powered by {this.props.framework}</h2>
     )
   }
 }
 
 // Example function component
+export function MERNDisplay(props) {
+  return (
+    <div className="course-icons">
+      <FaNode size="30%" color="#43853d" className="mt-5"/><br/>
+      <FaReact size="20%" color="skyblue" className="m-3" />
+      <FaShippingFast size="20%" color="#259dff" className="m-3"/>
+      <FaDatabase size="20%" color="#00ED64" className="m-3"/>
+    </div>
+  )
+}
+
+
 export function Welcome(props) {
   return (
     <div className="container my-5 py-5 text-center">
-      <FaReact size="5%" color="#ddd" className="m-3" />
-      <FaNodeJs size="5%" color="#ddd" className="m-3"/>
-      <FaDatabase size="5%" color="#ddd" className="m-3"/>
-      <h1 className="mt-3">Welcome to {props.to}!</h1>
+      <MERNDisplay/>
+      <h1 className="mt-3 display-5">Welcome to {props.to}</h1>
       <PoweredBy framework={`React from ${props.using}`}/>
     </div>
   )
