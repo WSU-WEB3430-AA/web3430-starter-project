@@ -24,7 +24,7 @@ export class PoweredBy extends React.Component {
 export function Welcome(props) {
   return (
     <div className="container my-5 py-5 text-center">
-      <FaReact size="8%" color="#ddd" className="m-3" />
+      <FaReact size="5%" color="#ddd" className="m-3" />
       <FaNodeJs size="5%" color="#ddd" className="m-3"/>
       <FaDatabase size="5%" color="#ddd" className="m-3"/>
       <h1 className="mt-3">Welcome to {props.to}!</h1>
