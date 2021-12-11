@@ -20,7 +20,7 @@ export class PoweredBy extends React.Component {
   }
 }
 
-// Example function component
+// Example function components
 export function MERNDisplay(props) {
   return (
     <div className="course-icons">
@@ -31,7 +31,6 @@ export function MERNDisplay(props) {
     </div>
   )
 }
-
 
 export function Welcome(props) {
   return (
