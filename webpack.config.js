@@ -1,36 +1,43 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const glob = require('glob')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+const htmlPlugins = glob.sync('./src/**/*.html').map(file => {
+  return new HtmlWebpackPlugin({
+    template: file,
+    filename: file.substring(`.${path.sep}src${path.sep}`.length),
+    scriptLoading: 'defer'
+  })
+})
 
 module.exports = {
   entry: {
     main: './src/javascripts/main.js'
   },
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: false, //'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    // static: path.join(__dirname, 'dist'), // Webpack 5
+    static: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     open: true,
+    liveReload: true,
+    hot: false,
     compress: true,
     port: 8080
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'javascripts/[name].js',
-    // clean: true // Webpack 5
+    publicPath: '/',
+    clean: true
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+        use: ['babel-loader']
       }, {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
@@ -38,13 +45,13 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       }, {
-        test: /\.(html|json|txt|dat|gif|jpg|png|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(json|txt|dat|png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
         use: [{
           loader: 'file-loader',
           options: { 
             name: '[name].[ext]',
             outputPath: (url, resourcePath, context) => {
-              return resourcePath.includes(`${path.sep}images${path.sep}`) ? `images/${url}` : url
+              return resourcePath.substring(`${__dirname}${path.sep}src${path.sep}`.length)
             }
           }
         }]
@@ -52,8 +59,9 @@ module.exports = {
     ]
   },
   plugins: [
+    ...htmlPlugins,
     new MiniCssExtractPlugin({
       filename: 'stylesheets/[name].css',
     })
   ]
-};
+}
