@@ -16,7 +16,7 @@ module.exports = {
     main: './src/javascripts/main.js'
   },
   mode: 'development',
-  devtool: false, //'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     static: path.join(__dirname, 'dist'),
     historyApiFallback: true,
