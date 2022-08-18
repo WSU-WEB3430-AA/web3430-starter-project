@@ -8,7 +8,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 let input = {}
-const { PORT = 8081 } = process.env
+const { PORT = 8080 } = process.env
 
 glob
   .sync("./src/**/*.html")
