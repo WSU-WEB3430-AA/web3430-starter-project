@@ -31,7 +31,7 @@ npm install @popperjs/core bootstrap bootstrap-icons
 
 **Note:** The above packages are not needed all at once but they are what we'll be using throughout the class. Additional packages can be installed using the `npm install` command.
 
-Before you can run this application, you need to create a configuration file named `.env` under the main folder of your repository. This project has a file named `.env.example` that you can copy or rename to a `.env` file. This file should be like:
+Before you can run this application, you need to create a configuration file named `.env` under the root folder of your repository. This project has a file named `.env.example` that you can copy or rename to a `.env` file. This file should be like:
 
 ```bash
 APP_SECRET=SeCrEt
