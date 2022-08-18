@@ -65,3 +65,15 @@ Visit http://localhost:8080/ in the browser to view your application.
 ```bash
 npm run build
 ```
+
+Notice that this project is equipped with `eslint` which should report any problems you might have in your JavaScript. The linter will runn automatically when you run the preview two commands. You can call the linter directly by running the command:
+
+```bash
+npm run lint
+```
+
+This project is also equipped with `prettier` which you can call to format your code (html, js, css, and scss) by calling the command:
+
+```bash
+npm run format
+```
