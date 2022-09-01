@@ -13,7 +13,7 @@ export class PoweredBy extends React.Component {
 }
 
 // Example function components
-export function MERNDisplay(props) {
+export function Display(props) {
   return (
     <div className="course-icons">
       <FaNode size="30%" color="#43853d" className="mt-5" />
@@ -28,12 +28,12 @@ export function MERNDisplay(props) {
 export function Welcome(props) {
   return (
     <div className="container my-5 py-5 text-center">
-      <MERNDisplay />
-      <h1 className="mt-3 display-5">Welcome to the front-end of {props.to}</h1>
-      <PoweredBy framework={`React from ${props.using}`} />
-      <a href="/hello">Click here to visit a back-end (server-side) page</a>
+      <Display />
+      <h1 className="mt-3 display-5">Welcome to modern web development</h1>
+      <PoweredBy framework={`${props.using}`} />
     </div>
   )
 }
 
-ReactDOM.createRoot(document.getElementById("main")).render(<Welcome to="WEB 3430" using="the MERN stack" />)
+let root = ReactDOM.createRoot(document.getElementById("main"))
+root.render(<Welcome to="WEB 3430" using="React" />)
